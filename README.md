@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 📦 Todo-Stock
 
-## Getting Started
+Sistema SaaS de gestión de inventario en tiempo real, desarrollado como proyecto final para la materia de Ingeniería de Software 2.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🚀 ¿Qué es Todo-Stock?
+
+Todo-Stock es una aplicación web que permite a negocios gestionar su inventario de forma sencilla y visual. Desde un dashboard centralizado puedes controlar productos, categorías, alertas de stock bajo y exportar reportes a Excel.
+
+---
+
+## ✨ Funcionalidades
+
+- 📊 **Dashboard en tiempo real** — tarjetas con resumen de productos, stock bajo, categorías y valor total del inventario
+- 📈 **Gráfica de stock** — barras con colores dinámicos (verde/amarillo/rojo) según el nivel de cada producto
+- 📦 **CRUD de productos** — crear, editar y eliminar productos con precio, stock y categoría
+- 🏷️ **Gestión de categorías** — agregar y eliminar categorías con validación de productos asignados
+- ⚠️ **Alertas de stock bajo** — detección automática cuando un producto baja del mínimo definido
+- 🔍 **Buscador en tiempo real** — filtrado instantáneo por nombre o categoría
+- 🔔 **Notificaciones toast** — confirmaciones visuales de cada acción
+- 📥 **Exportar a Excel** — descarga del inventario completo en formato .xlsx
+
+---
+
+## 🛠️ Stack tecnológico
+
+| Tecnología | Uso |
+|---|---|
+| **Next.js 16** | Framework frontend + backend |
+| **Prisma ORM** | Manejo de base de datos |
+| **SQLite** | Base de datos local |
+| **Tailwind CSS** | Estilos y diseño |
+| **Recharts** | Gráficas interactivas |
+| **react-hot-toast** | Notificaciones |
+| **xlsx (SheetJS)** | Exportar a Excel |
+
+---
+
+## 🗂️ Estructura del proyecto
+todo-stock/
+├── app/
+│   ├── api/
+│   │   ├── categorias/
+│   │   │   └── route.js       # GET, POST, DELETE categorías
+│   │   └── productos/
+│   │       ├── route.js       # GET, POST productos
+│   │       └── [id]/
+│   │           └── route.js   # PUT, DELETE producto por ID
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.js                # Interfaz principal
+├── lib/
+│   └── prisma.js              # Cliente de base de datos
+├── prisma/
+│   ├── schema.prisma          # Modelos de la base de datos
+│   └── migrations/
+└── package.json
+---
+
+## 🗄️ Modelo de base de datos
+
+```prisma
+model Categoria {
+  id        Int        @id @default(autoincrement())
+  nombre    String
+  productos Producto[]
+  creadoEn  DateTime   @default(now())
+}
+
+model Producto {
+  id            Int       @id @default(autoincrement())
+  nombre        String
+  descripcion   String?
+  precio        Float
+  stock         Int
+  stockMinimo   Int       @default(5)
+  categoria     Categoria @relation(fields: [categoriaId], references: [id])
+  categoriaId   Int
+  creadoEn      DateTime  @default(now())
+  actualizadoEn DateTime  @updatedAt
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📡 API REST
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Método | Endpoint | Descripción |
+|---|---|---|
+| GET | `/api/productos` | Lista todos los productos |
+| POST | `/api/productos` | Crea un nuevo producto |
+| PUT | `/api/productos/[id]` | Edita un producto |
+| DELETE | `/api/productos/[id]` | Elimina un producto |
+| GET | `/api/categorias` | Lista todas las categorías |
+| POST | `/api/categorias` | Crea una nueva categoría |
+| DELETE | `/api/categorias` | Elimina una categoría |
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ Instalación local
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+# Clonar el repositorio
+git clone https://github.com/luissAgc1318-source/Todo-Stock.git
+cd Todo-Stock
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+# Instalar dependencias
+npm install
 
-## Deploy on Vercel
+# Crear la base de datos
+npx prisma migrate dev --name init
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+# Iniciar el servidor
+npm run dev
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por **Luisa** — Ingeniería de Software 2
