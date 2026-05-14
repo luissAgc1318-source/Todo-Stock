@@ -1,29 +1,29 @@
-# 📦 Todo-Stock
+#  Todo-Stock
 
 Sistema SaaS de gestión de inventario en tiempo real, desarrollado como proyecto final para la materia de Ingeniería de Software 2.
 
 ---
 
-## 🚀 ¿Qué es Todo-Stock?
+##  ¿Qué es Todo-Stock?
 
 Todo-Stock es una aplicación web que permite a negocios gestionar su inventario de forma sencilla y visual. Desde un dashboard centralizado puedes controlar productos, categorías, alertas de stock bajo y exportar reportes a Excel.
 
 ---
 
-## ✨ Funcionalidades
+##  Funcionalidades
 
-- 📊 **Dashboard en tiempo real** — tarjetas con resumen de productos, stock bajo, categorías y valor total del inventario
-- 📈 **Gráfica de stock** — barras con colores dinámicos (verde/amarillo/rojo) según el nivel de cada producto
-- 📦 **CRUD de productos** — crear, editar y eliminar productos con precio, stock y categoría
-- 🏷️ **Gestión de categorías** — agregar y eliminar categorías con validación de productos asignados
-- ⚠️ **Alertas de stock bajo** — detección automática cuando un producto baja del mínimo definido
-- 🔍 **Buscador en tiempo real** — filtrado instantáneo por nombre o categoría
-- 🔔 **Notificaciones toast** — confirmaciones visuales de cada acción
-- 📥 **Exportar a Excel** — descarga del inventario completo en formato .xlsx
+-  **Dashboard en tiempo real** — tarjetas con resumen de productos, stock bajo, categorías y valor total del inventario
+-  **Gráfica de stock** — barras con colores dinámicos (verde/amarillo/rojo) según el nivel de cada producto
+-  **CRUD de productos** — crear, editar y eliminar productos con precio, stock y categoría
+-  **Gestión de categorías** — agregar y eliminar categorías con validación de productos asignados
+-  **Alertas de stock bajo** — detección automática cuando un producto baja del mínimo definido
+-  **Buscador en tiempo real** — filtrado instantáneo por nombre o categoría
+-  **Notificaciones toast** — confirmaciones visuales de cada acción
+-  **Exportar a Excel** — descarga del inventario completo en formato .xlsx
 
 ---
 
-## 🛠️ Stack tecnológico
+## Stack tecnológico
 
 | Tecnología | Uso |
 |---|---|
@@ -37,28 +37,8 @@ Todo-Stock es una aplicación web que permite a negocios gestionar su inventario
 
 ---
 
-## 🗂️ Estructura del proyecto
-todo-stock/
-├── app/
-│   ├── api/
-│   │   ├── categorias/
-│   │   │   └── route.js       # GET, POST, DELETE categorías
-│   │   └── productos/
-│   │       ├── route.js       # GET, POST productos
-│   │       └── [id]/
-│   │           └── route.js   # PUT, DELETE producto por ID
-│   ├── globals.css
-│   ├── layout.tsx
-│   └── page.js                # Interfaz principal
-├── lib/
-│   └── prisma.js              # Cliente de base de datos
-├── prisma/
-│   ├── schema.prisma          # Modelos de la base de datos
-│   └── migrations/
-└── package.json
----
 
-## 🗄️ Modelo de base de datos
+##  Modelo de base de datos
 
 ```prisma
 model Categoria {
@@ -84,7 +64,7 @@ model Producto {
 
 ---
 
-## 📡 API REST
+##  API REST
 
 | Método | Endpoint | Descripción |
 |---|---|---|
@@ -98,7 +78,7 @@ model Producto {
 
 ---
 
-## ⚙️ Instalación local
+##  Instalación local
 
 ```bash
 # Clonar el repositorio
@@ -121,4 +101,4 @@ Abrir [http://localhost:3000](http://localhost:3000) en el navegador.
 
 ## 👨‍💻 Autor
 
-Desarrollado por **Luisa** — Ingeniería de Software 2
+Desarrollado por **Luis Angel Garcia** — Ingeniería de Software 2
