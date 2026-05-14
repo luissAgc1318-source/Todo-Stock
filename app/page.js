@@ -183,7 +183,7 @@ export default function Home() {
             <Package className="text-white" size={22} />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-gray-800">InventarioPro</h1>
+            <h1 className="text-lg font-bold text-gray-800">Todo-Stock</h1>
             <p className="text-xs text-gray-400">Sistema de gestión de inventario</p>
           </div>
         </div>
